@@ -18,10 +18,12 @@ app.use(helmet());
 //Routes
 const userRoutes = require('./Routes/users');
 const materialRoutes = require('./Routes/materials');
+const officeRoutes = require('./Routes/offices');
 
 app.use(cookieParser('secret'));
 app.use('/api', userRoutes);
 app.use('/api', materialRoutes);
+app.use('/api', officeRoutes);
 
 const PORT = 5000;
 

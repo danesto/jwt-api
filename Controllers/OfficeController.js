@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
-const Material = require('../Models/Material');
+const Office = require('../Models/Office');
 
-exports.getAllMaterials = (req, res, next) => {
+exports.getAllOffices = (req, res, next) => {
     jwt.verify(req.token, 'password', (err) => {
         if(err) {
             const statusError = res.sendStatus(403);
@@ -10,19 +10,19 @@ exports.getAllMaterials = (req, res, next) => {
                 message:statusError
             });
         } else {
-            Material.find()
+            Office.find()
             .exec()
-            .then(materials => {
-                res.json(materials)
+            .then(offices => {
+                res.json(offices)
             })
             .catch(err => {
                 console.log(err);
             })
         }
     })
-};
-
-exports.addMaterial = (req, res, next) => {
+}
+   
+exports.addOffice = (req, res, next) => {
     //Verify is token is valid and return data of endpoint
     jwt.verify(req.token, 'password', (err, authData) => {
         if(err) {
@@ -32,14 +32,12 @@ exports.addMaterial = (req, res, next) => {
                 statusCode: statusError
             });
         } else {
-            const material = new Material({
+            const office = new Office({
                 _id: new mongoose.Types.ObjectId(),
-                name: req.body.name,
-                quantity: req.body.quantity,
-                description: req.body.description
+                name: req.body.name
             });
 
-            material
+            office
             .save()
             .then(result => {
                 console.log(result);
@@ -49,15 +47,10 @@ exports.addMaterial = (req, res, next) => {
             });
 
             res.json({
-                message: "Material added to database",
-                materialAdded: material,
+                message: "Office added to database",
+                officeAdded: office,
                 statusCode: 200
             })
         }
     })
-}
-
-exports.getMaterial = (req, res, next) => {
-    const id = req.params.id;
-    return console.log(id);
 }

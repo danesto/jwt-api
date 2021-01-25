@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 //Controllers
-const materialController = require('../Controllers/MaterialController');
+const officeController = require('../Controllers/OfficeController');
 const verificationController = require('../Controllers/VerificationController');
 
 // Middleware for token verification, checks if token is valid before returning endpoint data
 const tokenVerificationMiddleware = verificationController.verifyToken;
 
-router.get('/materials', tokenVerificationMiddleware, materialController.getAllMaterials);
-router.post('/materials', tokenVerificationMiddleware, materialController.addMaterial);
-router.post('/material/:id', tokenVerificationMiddleware, materialController.getMaterial);
+router.get('/offices', tokenVerificationMiddleware, officeController.getAllOffices);
+router.post('/offices', tokenVerificationMiddleware, officeController.addOffice);
+// router.post('/material/:id', tokenVerificationMiddleware, materialController.getMaterial);
 
 module.exports = router;

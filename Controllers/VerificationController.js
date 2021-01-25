@@ -29,7 +29,7 @@ exports.getUser = async (req, res, next) => {
 exports.verifyToken = (req, res, next) => {
     //Make a authorization header which hold the bearer token
     const bearerHeader = req.headers['authorization'];
-
+    // console.log(bearerHeader);
     if (typeof bearerHeader !== undefined) {
         const bearer = bearerHeader.split(' ');
         const bearerToken = bearer[1];
