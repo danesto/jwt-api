@@ -59,5 +59,18 @@ exports.addMaterial = (req, res, next) => {
 
 exports.getMaterial = (req, res, next) => {
     const id = req.params.id;
-    return console.log(id);
+    console.log(id);
+}
+
+exports.deleteMaterial = (req, res, next) => {
+    const id = req.params.id;
+    Material.deleteOne({_id: id}).then(result => {
+        console.log(result);
+        res.json({
+            message: "Material deleted",
+            statusCode: 200
+        })
+    }).catch(err => {
+        console.log(err);
+    })
 }
