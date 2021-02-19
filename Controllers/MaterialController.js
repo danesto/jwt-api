@@ -74,3 +74,16 @@ exports.deleteMaterial = (req, res, next) => {
         console.log(err);
     })
 }
+
+exports.updateMaterial = (req, res) => {
+    try{ 
+        const id = req.body.id;
+        const qty = req.body.qty;
+        Material.updateOne({_id: id}, {$set:{quantity: qty}}, function(err) {console.log(err)});
+        return res.json({
+            message: "Materijal azuriran"
+        })
+    } catch (err) {
+        console.error(err);
+    }
+}

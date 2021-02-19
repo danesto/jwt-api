@@ -10,7 +10,8 @@ const tokenVerificationMiddleware = verificationController.verifyToken;
 
 router.get('/materials', tokenVerificationMiddleware, materialController.getAllMaterials);
 router.post('/materials', tokenVerificationMiddleware, materialController.addMaterial);
+router.post('/material/update-material', tokenVerificationMiddleware, materialController.updateMaterial);
 router.post('/material/:id', tokenVerificationMiddleware, materialController.getMaterial);
-router.post('/material/delete/:id', tokenVerificationMiddleware, materialController.deleteMaterial);
+router.get('/material/delete/:id', tokenVerificationMiddleware, materialController.deleteMaterial);
 
 module.exports = router;

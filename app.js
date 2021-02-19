@@ -20,12 +20,14 @@ const userRoutes = require('./Routes/users');
 const materialRoutes = require('./Routes/materials');
 const officeRoutes = require('./Routes/offices');
 const reservationRoutes = require('./Routes/reservations');
+const leaveRoutes = require('./Routes/leaves');
 
 app.use(cookieParser('secret'));
 app.use('/api', userRoutes);
 app.use('/api', materialRoutes);
 app.use('/api', officeRoutes);
 app.use('/api', reservationRoutes);
+app.use('/api', leaveRoutes);
 
 const PORT = 5000;
 

@@ -54,3 +54,15 @@ exports.addOffice = (req, res, next) => {
         }
     })
 }
+
+exports.deleteOffice = (req, res) => {
+    const id = req.params.id;
+    Office.deleteOne({_id: id}).then(result => {
+        res.json({
+            message: "Office deleted",
+            statusCode: 200
+        })
+    }).catch(err => {
+        console.log(err);
+    })
+}

@@ -10,4 +10,8 @@ const tokenVerificationMiddleware = verificationController.verifyToken;
 
 router.get('/reservations', tokenVerificationMiddleware, reservationController.getAllReservations);
 router.post('/reservations', tokenVerificationMiddleware, reservationController.addNewReservation);
+router.get('/filter-reservations', tokenVerificationMiddleware, reservationController.filterByDate);
+router.post('/reservations/search', tokenVerificationMiddleware, reservationController.searchReservations);
+router.post('/reservations/delete', tokenVerificationMiddleware, reservationController.deleteResevations);
+
 module.exports = router;
